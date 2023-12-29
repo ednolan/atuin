@@ -38,9 +38,9 @@ impl Database {
         }
 
         let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
-            .journal_mode(SqliteJournalMode::Wal)
+            .journal_mode(SqliteJournalMode::Memory)
             .optimize_on_close(true, None)
-            .synchronous(SqliteSynchronous::Normal)
+            .synchronous(SqliteSynchronous::Off)
             .with_regexp()
             .foreign_keys(true)
             .create_if_missing(true);
